@@ -19,6 +19,7 @@
     "proxy-server": "file:"
   },
   "devDependencies": {
+    "joi": "^17.13.3",
     "nodemon": "^3.1.7"
   }
 }

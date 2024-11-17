@@ -1,4 +1,4 @@
-import { getPhotos } from "../usecases/getPhotos.js";
+import { getPhotos } from "../../usecases/getPhotos.js";
 
 const marsPhotoController = async (req, res) => {
   try {

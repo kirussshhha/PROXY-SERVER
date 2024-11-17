@@ -1,5 +1,5 @@
-import { getMeteors, getDangerousMeteors } from "../usecases/getMeteors.js";
-import { getDateRange } from "../usecases/getDateRange.js";
+import { getMeteors, getDangerousMeteors } from '../../usecases/getMeteors.js';
+import { getDateRange } from "../../usecases/getDateRange.js";
 
 const meteorsController = async (req, res) => {
   try {
