@@ -2,7 +2,7 @@ import { getMeteorsFromNasa } from "../repositories/nasaRepository.js";
 
 const getMeteors = async (startDate, endDate) => {
   try {
-    const data = await getMeteorsFromNasa(startDate, endDate); 
+    const data = await getMeteorsFromNasa(startDate, endDate);
     const nearEarthObjects = data.near_earth_objects;
     const filteredMeteors = [];
 
@@ -24,10 +24,29 @@ const getMeteors = async (startDate, endDate) => {
       });
     }
 
-    return filteredMeteors; 
+    return filteredMeteors;
   } catch (err) {
     throw new Error("Ошибка при обработке данных метеоров: " + err.message);
   }
 };
 
-export { getMeteors };
+const getDangerousMeteors = async (startDate, endDate) => {
+  try {
+    const meteors = await getMeteors(startDate, endDate);
+    const isDangerous = [];
+
+    meteors.forEach((meteor) => {
+      if (meteor.is_potentially_hazardous_asteroid) {
+        isDangerous.push(meteor);
+      }
+    });
+
+    return isDangerous;
+  } catch (err) {
+    throw new Error(
+      "Ошибка при получении данных об опасных метеоритов: " + err.message
+    );
+  }
+};
+
+export { getMeteors, getDangerousMeteors };
